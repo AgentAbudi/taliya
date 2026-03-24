@@ -1,0 +1,17 @@
+{
+  "name": "Taliya â Dhikr Companion",
+  "short_name": "Taliya",
+  "description": "A simple dhikr companion that helps you remember Allah â one tap at a time.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFDF7",
+  "theme_color": "#065F46",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
