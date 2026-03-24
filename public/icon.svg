@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#065F46"/>
+  <g transform="translate(256, 240)">
+    <circle cx="0" cy="0" r="100" fill="#FFFDF7"/>
+    <circle cx="35" cy="-20" r="80" fill="#065F46"/>
+    <polygon points="60,-30 67,-10 88,-10 71,2 78,22 60,12 42,22 49,2 32,-10 53,-10" fill="#D4A843"/>
+  </g>
+  <text x="256" y="420" text-anchor="middle" font-family="serif" font-size="72" font-weight="700" fill="#FFFDF7">تالية</text>
+</svg>
