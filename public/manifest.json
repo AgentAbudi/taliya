@@ -1,0 +1,17 @@
+{
+  "name": "Taliyat \u2014 Dhikr Companion",
+  "short_name": "Taliyat",
+  "description": "A simple dhikr companion that helps you remember Allah \u2014 one tap at a time.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFDF7",
+  "theme_color": "#065F46",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
