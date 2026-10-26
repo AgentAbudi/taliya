@@ -32,7 +32,7 @@ import {
   getDateKey,
 } from "../../lib/tracker-storage";
 
-/* âââ Prayer Check-In Item âââ */
+/* ═══ Prayer Check-In Item ═══ */
 function PrayerItem({
   item,
   location,
@@ -51,7 +51,7 @@ function PrayerItem({
       <div className="flex-1">
         <p className="text-sm font-medium text-emerald-700">{item.label}</p>
         {item.labelAr && <p className="text-[10px] text-emerald-500/60" dir="rtl">{item.labelAr}</p>}
-        {streak > 0 && <p className="text-[10px] text-emerald-500">{"ð¥"} {streak} day streak</p>}
+        {streak > 0 && <p className="text-[10px] text-emerald-500">{"🔥"} {streak} day streak</p>}
       </div>
       <div className="flex gap-1">
         {(["masjid", "home", "missed"] as const).map((opt) => (
@@ -66,7 +66,7 @@ function PrayerItem({
                 : "bg-cream-200/60 text-emerald-600 hover:bg-cream-200"
             }`}
           >
-            {opt === "masjid" ? "ð" : opt === "home" ? "ð " : "â"}
+            {opt === "masjid" ? "🕌" : opt === "home" ? "🏠" : "✗"}
           </button>
         ))}
       </div>
@@ -74,7 +74,7 @@ function PrayerItem({
   );
 }
 
-/* âââ Boolean Check-In Item âââ */
+/* ═══ Boolean Check-In Item ═══ */
 function BooleanItem({
   item,
   value,
@@ -98,7 +98,7 @@ function BooleanItem({
       <span className="text-2xl">{item.icon}</span>
       <div className="flex-1 text-left">
         <p className={`text-sm font-medium ${value ? "text-emerald-800" : "text-emerald-700"}`}>{item.label}</p>
-        {streak > 0 && <p className="text-[10px] text-emerald-500">{"ð¥"} {streak} day streak</p>}
+        {streak > 0 && <p className="text-[10px] text-emerald-500">{"🔥"} {streak} day streak</p>}
       </div>
       <div className={`w-7 h-7 rounded-full flex items-center justify-center transition-all ${
         value ? "bg-emerald-600 text-cream-50" : "bg-cream-200/80 text-cream-300"
@@ -113,7 +113,7 @@ function BooleanItem({
   );
 }
 
-/* âââ Number Check-In Item âââ */
+/* ═══ Number Check-In Item ═══ */
 function NumberItem({
   item,
   value,
@@ -130,13 +130,13 @@ function NumberItem({
       <span className="text-2xl">{item.icon}</span>
       <div className="flex-1">
         <p className="text-sm font-medium text-emerald-700">{item.label}</p>
-        {streak > 0 && <p className="text-[10px] text-emerald-500">{"ð¥"} {streak} day streak</p>}
+        {streak > 0 && <p className="text-[10px] text-emerald-500">{"🔥"} {streak} day streak</p>}
       </div>
       <div className="flex items-center gap-2">
         <button
           onClick={() => onChange(Math.max(item.min || 0, value - (item.step || 1)))}
           className="w-7 h-7 rounded-full bg-emerald-100 hover:bg-emerald-200 flex items-center justify-center text-emerald-700 transition-colors"
-        >{"â"}</button>
+        >{"−"}</button>
         <input
           type="number"
           value={value || ""}
@@ -157,7 +157,7 @@ function NumberItem({
   );
 }
 
-/* âââ Select Check-In Item âââ */
+/* ═══ Select Check-In Item ═══ */
 function SelectItem({
   item,
   value,
@@ -192,7 +192,7 @@ function SelectItem({
   );
 }
 
-/* âââ Category Ring (SVG) âââ */
+/* ═══ Category Ring (SVG) ═══ */
 function CategoryRing({ score, color, size = 52 }: { score: number; color: string; size?: number }) {
   const r = (size - 8) / 2;
   const circ = 2 * Math.PI * r;
@@ -211,7 +211,7 @@ function CategoryRing({ score, color, size = 52 }: { score: number; color: strin
   );
 }
 
-/* âââ Weekly Mini Chart âââ */
+/* ═══ Weekly Mini Chart ═══ */
 function WeeklyMiniChart({ entries }: { entries: DailyEntry[] }) {
   const dayLabels = ["M", "T", "W", "T", "F", "S", "S"];
   return (
@@ -238,7 +238,7 @@ function WeeklyMiniChart({ entries }: { entries: DailyEntry[] }) {
   );
 }
 
-/* âââ Monthly Heatmap âââ */
+/* ═══ Monthly Heatmap ═══ */
 function MonthlyHeatmap({ year, month }: { year: number; month: number }) {
   const entries = getMonthEntries(year, month);
   const firstDayOfMonth = new Date(year, month, 1).getDay();
@@ -283,7 +283,7 @@ function MonthlyHeatmap({ year, month }: { year: number; month: number }) {
   );
 }
 
-/* âââ Insight Card âââ */
+/* ═══ Insight Card ═══ */
 function InsightCard({ insight }: { insight: Insight }) {
   const bgMap = { positive: "bg-emerald-50 border-emerald-200", neutral: "bg-cream-100 border-cream-200", suggestion: "bg-amber-50 border-amber-200" };
   return (
@@ -294,7 +294,7 @@ function InsightCard({ insight }: { insight: Insight }) {
   );
 }
 
-/* âââ Main Tracker Page âââ */
+/* ═══ Main Tracker Page ═══ */
 export default function TrackerPage() {
   const [mounted, setMounted] = useState(false);
   const [entry, setEntry] = useState<DailyEntry>({ date: getTodayKey(), items: {}, prayers: {} });
@@ -307,7 +307,7 @@ export default function TrackerPage() {
   const [hiddenItems, setHiddenItems] = useState<string[]>([]);
   const [customHabits, setCustomHabitsState] = useState<CustomHabit[]>([]);
   const [showAddHabit, setShowAddHabit] = useState(false);
-  const [newHabit, setNewHabit] = useState({ label: "", icon: "â­", category: "spiritual" as CategoryId, type: "boolean" as const });
+  const [newHabit, setNewHabit] = useState({ label: "", icon: "⭐", category: "spiritual" as CategoryId, type: "boolean" as const });
 
   useEffect(() => {
     const todayEntry = getTodayEntry();
@@ -387,7 +387,7 @@ export default function TrackerPage() {
     setCustomHabitsState(updated);
     saveCustomHabits(updated);
     setActiveItems(getActiveItems());
-    setNewHabit({ label: "", icon: "â­", category: "spiritual", type: "boolean" });
+    setNewHabit({ label: "", icon: "⭐", category: "spiritual", type: "boolean" });
     setShowAddHabit(false);
   }, [newHabit, customHabits]);
 
@@ -419,7 +419,7 @@ export default function TrackerPage() {
 
   return (
     <div className="min-h-dvh bg-gradient-to-b from-cream-50 via-cream-100 to-emerald-50 flex flex-col pb-24">
-      {/* ââ Header ââ */}
+      {/* ── Header ── */}
       <header className="w-full max-w-md mx-auto px-5 pt-8 pb-2">
         <div className="flex items-center justify-between">
           <div>
@@ -435,24 +435,24 @@ export default function TrackerPage() {
         </div>
       </header>
 
-      {/* ââ View Tabs ââ */}
+      {/* ── View Tabs ── */}
       <div className="w-full max-w-md mx-auto px-5 mb-4">
         <div className="flex gap-1 bg-cream-200/40 rounded-xl p-1">
           {(["dashboard", "checkin", "insights", "settings"] as const).map((v) => (
             <button
               key={v}
-              onClick={() => setViev(v)}
+              onClick={() => setView(v)}
               className={`flex-1 py-2 rounded-lg text-[10px] font-medium transition-all ${
                 view === v ? "bg-emerald-700 text-cream-50 shadow-sm" : "text-emerald-600 hover:bg-cream-200/60"
               }`}
             >
-              {v === "dashboard" ? "ð  Home" : v === "checkin" ? "â Log" : v === "insights" ? "ð Insights" : "âï¸ Edit"}
+              {v === "dashboard" ? "🏠 Home" : v === "checkin" ? "✅ Log" : v === "insights" ? "📊 Insights" : "⚙️ Edit"}
             </button>
           ))}
         </div>
       </div>
 
-      {/* ââââââââââââââââ DASHBOARD VIEW ââââââââââââââââ */}
+      {/* ════════════════ DASHBOARD VIEW ════════════════ */}
       {view === "dashboard" && (
         <div className="w-full max-w-md mx-auto px-5 flex-1 space-y-4">
           {/* Mood check */}
@@ -460,11 +460,11 @@ export default function TrackerPage() {
             <p className="text-xs text-emerald-600/60 mb-2 font-medium">How are you feeling?</p>
             <div className="flex justify-around">
               {[
-                { val: 1, emoji: "ð", label: "Low" },
-                { val: 2, emoji: "ð", label: "Meh" },
-                { val: 3, emoji: "ð", label: "OK" },
-                { val: 4, emoji: "ð", label: "Good" },
-                { val: 5, emoji: "ð¤©", label: "Great" },
+                { val: 1, emoji: "😞", label: "Low" },
+                { val: 2, emoji: "😐", label: "Meh" },
+                { val: 3, emoji: "🙂", label: "OK" },
+                { val: 4, emoji: "😊", label: "Good" },
+                { val: 5, emoji: "🤩", label: "Great" },
               ].map((m) => (
                 <button
                   key={m.val}
@@ -483,7 +483,7 @@ export default function TrackerPage() {
           {/* Prayer Status */}
           <div className="bg-white/50 rounded-2xl p-4 border border-emerald-100/50">
             <div className="flex items-center justify-between mb-3">
-              <p className="text-xs text-emerald-600/60 font-medium">{"ð"} Today's Prayers</p>
+              <p className="text-xs text-emerald-600/60 font-medium">{"🕌"} Today's Prayers</p>
               <span className="text-sm font-bold text-emerald-700">{todayPrayerCount}/5</span>
             </div>
             <div className="flex gap-2">
@@ -498,7 +498,7 @@ export default function TrackerPage() {
                         : loc === "home" ? "bg-emerald-400 text-cream-50"
                         : "bg-cream-200/60 text-emerald-600/40"
                     }`}>
-                      {done ? "â" : item?.icon}
+                      {done ? "✓" : item?.icon}
                     </div>
                     <p className="text-[9px] text-emerald-600/60 mt-1">{item?.label}</p>
                   </div>
@@ -535,14 +535,14 @@ export default function TrackerPage() {
           {/* Quick Insight */}
           {insights.length > 0 && (
             <div className="space-y-2">
-              <p className="text-xs text-emerald-600/60 font-medium">{"ð¡"} Insights</p>
+              <p className="text-xs text-emerald-600/60 font-medium">{"💡"} Insights</p>
               {insights.slice(0, 3).map((ins) => <InsightCard key={ins.id} insight={ins} />)}
             </div>
           )}
         </div>
       )}
 
-      {/* ââââââââââââââââ CHECK-IN VIEW ââââââââââââââââ */}
+      {/* ════════════════ CHECK-IN VIEW ════════════════ */}
       {view === "checkin" && (
         <div className="w-full max-w-md mx-auto px-5 flex-1">
           {/* Category filter */}
@@ -613,12 +613,12 @@ export default function TrackerPage() {
         </div>
       )}
 
-      {/* ââââââââââââââââ INSIGHTS VIEW ââââââââââââââââ */}
+      {/* ════════════════ INSIGHTS VIEW ════════════════ */}
       {view === "insights" && (
         <div className="w-full max-w-md mx-auto px-5 flex-1 space-y-4">
           {/* Prayer Analysis */}
           <div className="bg-white/50 rounded-2xl p-4 border border-emerald-100/50">
-            <p className="text-xs text-emerald-600/60 mb-3 font-medium">{"ð"} Prayer Analysis (7 days)</p>
+            <p className="text-xs text-emerald-600/60 mb-3 font-medium">{"🕌"} Prayer Analysis (7 days)</p>
             <div className="grid grid-cols-3 gap-2 mb-3">
               <div className="text-center p-2 rounded-xl bg-emerald-50">
                 <p className="text-lg font-bold text-emerald-700">{prayerStats.percentage}%</p>
@@ -626,11 +626,11 @@ export default function TrackerPage() {
               </div>
               <div className="text-center p-2 rounded-xl bg-emerald-50">
                 <p className="text-lg font-bold text-emerald-700">{prayerStats.atMasjid}</p>
-                <p className="text-[9px] text-emerald-500">{"ð"} Masjid</p>
+                <p className="text-[9px] text-emerald-500">{"🕌"} Masjid</p>
               </div>
               <div className="text-center p-2 rounded-xl bg-emerald-50">
                 <p className="text-lg font-bold text-emerald-700">{prayerStats.atHome}</p>
-                <p className="text-[9px] text-emerald-500">{"ð "} Home</p>
+                <p className="text-[9px] text-emerald-500">{"🏠"} Home</p>
               </div>
             </div>
             {prayerStats.total > 0 && (
@@ -681,7 +681,7 @@ export default function TrackerPage() {
 
           {/* Streaks */}
           <div className="bg-white/50 rounded-2xl p-4 border border-emerald-100/50">
-            <p className="text-xs text-emerald-600/60 mb-3 font-medium">{"ð¥"} Active Streaks</p>
+            <p className="text-xs text-emerald-600/60 mb-3 font-medium">{"🔥"} Active Streaks</p>
             <div className="grid grid-cols-2 gap-2">
               {activeItems
                 .filter((item) => (streaks[item.id] || 0) > 0)
@@ -692,7 +692,7 @@ export default function TrackerPage() {
                     <span className="text-lg">{item.icon}</span>
                     <div>
                       <p className="text-xs font-medium text-emerald-700">{item.label}</p>
-                      <p className="text-[10px] text-emerald-500">{"ð¥"} {streaks[item.id]} days</p>
+                      <p className="text-[10px] text-emerald-500">{"🔥"} {streaks[item.id]} days</p>
                     </div>
                   </div>
                 ))}
@@ -705,7 +705,7 @@ export default function TrackerPage() {
           {/* All Insights */}
           {insights.length > 0 && (
             <div className="space-y-2">
-              <p className="text-xs text-emerald-600/60 font-medium">{"ð¡"} All Insights</p>
+              <p className="text-xs text-emerald-600/60 font-medium">{"💡"} All Insights</p>
               {insights.map((ins) => <InsightCard key={ins.id} insight={ins} />)}
             </div>
           )}
@@ -738,7 +738,7 @@ export default function TrackerPage() {
         </div>
       )}
 
-      {/* ââââââââââââââââ SETTINGS VIEW ââââââââââââââââ */}
+      {/* ════════════════ SETTINGS VIEW ════════════════ */}
       {view === "settings" && (
         <div className="w-full max-w-md mx-auto px-5 flex-1 space-y-4">
           <div className="bg-white/50 rounded-2xl p-4 border border-emerald-100/50">
@@ -778,7 +778,7 @@ export default function TrackerPage() {
                 </div>
                 <div className="flex gap-2">
                   <div className="flex gap-1 flex-wrap flex-1">
-                    {["â­", "ðª", "ð", "ð", "ð§", "ð¯", "â¤ï¸", "ð±", "ð§", "ð"].map((e) => (
+                    {["⭐", "💪", "📚", "🌙", "💧", "🎯", "❤️", "🌱", "🧘", "🏃"].map((e) => (
                       <button
                         key={e}
                         onClick={() => setNewHabit({ ...newHabit, icon: e })}
@@ -826,7 +826,7 @@ export default function TrackerPage() {
             {/* Custom habits */}
             {customHabits.length > 0 && (
               <div className="mb-3">
-                <p className="text-[10px] text-emerald-600/60 font-medium mb-1.5 uppercase tracking-wider">{"â­"} Custom</p>
+                <p className="text-[10px] text-emerald-600/60 font-medium mb-1.5 uppercase tracking-wider">{"⭐"} Custom</p>
                 <div className="space-y-1">
                   {customHabits.map((habit) => (
                     <div key={habit.id} className="flex items-center justify-between py-1.5 px-2 rounded-lg hover:bg-cream-100/60">
@@ -837,7 +837,7 @@ export default function TrackerPage() {
                       <button
                         onClick={() => removeCustomHabit(habit.id)}
                         className="text-red-400 hover:text-red-600 text-xs"
-                      >{"â"}</button>
+                      >{"✕"}</button>
                     </div>
                   ))}
                 </div>
@@ -847,7 +847,7 @@ export default function TrackerPage() {
         </div>
       )}
 
-      {/* ââ Bottom Nav ââ */}
+      {/* ── Bottom Nav ── */}
       <nav className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-lg border-t border-emerald-100/50 safe-area-bottom">
         <div className="max-w-md mx-auto flex">
           <a href="/" className="flex-1 flex flex-col items-center py-3 text-emerald-500/60 hover:text-emerald-600 transition-colors">
