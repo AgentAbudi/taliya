@@ -307,7 +307,7 @@ export default function TrackerPage() {
   const [hiddenItems, setHiddenItems] = useState<string[]>([]);
   const [customHabits, setCustomHabitsState] = useState<CustomHabit[]>([]);
   const [showAddHabit, setShowAddHabit] = useState(false);
-  const [newHabit, setNewHabit] = useState({ label: "", icon: "⭐", category: "spiritual" as CategoryId, type: "boolean" as const });
+  const [newHabit, setNewHabit] = useState({ label: "", icon: "⭐", category: "spiritual" as CategoryId, type: "boolean" as "boolean" | "number" });
 
   useEffect(() => {
     const todayEntry = getTodayEntry();
