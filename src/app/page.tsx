@@ -2,17 +2,17 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 
-/* âââ Dhikr Data âââ */
+/* ═══ Dhikr Data ═══ */
 const DHIKR_LIST = [
-  { id: "astaghfirullah", arabic: "Ø£ÙØ³ÙØªÙØºÙÙÙØ±Ù Ù±ÙÙÙÙÙÙ", label: "Astaghfirullah", meaning: "I seek forgiveness from Allah" },
-  { id: "alhamdulillah", arabic: "Ù±ÙÙØ­ÙÙÙØ¯Ù ÙÙÙÙÙÙÙ", label: "Alhamdulillah", meaning: "All praise is due to Allah" },
-  { id: "subhanallah", arabic: "Ø³ÙØ¨ÙØ­ÙØ§ÙÙ Ù±ÙÙÙÙÙÙ", label: "SubhanAllah", meaning: "Glory be to Allah" },
-  { id: "allahuakbar", arabic: "Ù±ÙÙÙÙÙÙ Ø£ÙÙÙØ¨ÙØ±Ù", label: "Allahu Akbar", meaning: "Allah is the Greatest" },
+  { id: "astaghfirullah", arabic: "أَسْتَغْفِرُ اللَّهَ", label: "Astaghfirullah", meaning: "I seek forgiveness from Allah" },
+  { id: "alhamdulillah", arabic: "الْحَمْدُ لِلَّهِ", label: "Alhamdulillah", meaning: "All praise is due to Allah" },
+  { id: "subhanallah", arabic: "سُبْحَانَ اللَّهِ", label: "SubhanAllah", meaning: "Glory be to Allah" },
+  { id: "allahuakbar", arabic: "اللَّهُ أَكْبَرُ", label: "Allahu Akbar", meaning: "Allah is the Greatest" },
 ] as const;
 
 const GOALS = [33, 100, 500, 1000];
 
-/* âââ Helpers âââ */
+/* ═══ Helpers ═══ */
 function getTodayKey() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -35,7 +35,7 @@ function saveState(state: Record<string, unknown>) {
   localStorage.setItem("taliya-state", JSON.stringify({ ...state, date: getTodayKey() }));
 }
 
-/* âââ Main Component âââ */
+/* ═══ Main Component ═══ */
 export default function Home() {
   const [activeDhikr, setActiveDhikr] = useState(0);
   const [counts, setCounts] = useState<Record<string, number>>({});
@@ -127,7 +127,7 @@ export default function Home() {
   return (
     <div className="min-h-dvh bg-gradient-to-b from-cream-50 via-cream-100 to-emerald-50 flex flex-col items-center relative overflow-hidden pb-20">
 
-      {/* ââ Install Banner ââ */}
+      {/* ── Install Banner ── */}
       {showInstallBanner && (
         <div className="w-full max-w-md px-4 pt-4 animate-fade-in-up">
           <div className="flex items-center gap-3 bg-emerald-700 text-cream-50 rounded-2xl px-4 py-3 shadow-lg shadow-emerald-700/20">
@@ -152,12 +152,12 @@ export default function Home() {
         </div>
       )}
 
-      {/* ââ Header ââ */}
+      {/* ── Header ── */}
       <header className="w-full max-w-md px-6 pt-8 pb-2 animate-fade-in-up">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-semibold text-emerald-800 tracking-tight">Taliya</h1>
-            <p className="text-xs text-emerald-600/70 mt-0.5">ØªØ§ÙÙØ©</p>
+            <p className="text-xs text-emerald-600/70 mt-0.5">{"تالية"}</p>
           </div>
           <div className="text-right">
             <p className="text-xs text-emerald-600/60 uppercase tracking-wider">Today</p>
@@ -166,7 +166,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ââ Dhikr Selector ââ */}
+      {/* ── Dhikr Selector ── */}
       <div className="w-full max-w-md px-6 mt-4 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
         <div className="flex items-center gap-2">
           <button
@@ -187,7 +187,7 @@ export default function Home() {
                     : "bg-emerald-100/50 text-emerald-600 hover:bg-emerald-200/60"
                 }`}
               >
-                {d.label.length > 10 ? d.label.slice(0, 8) + "â¦" : d.label}
+                {d.label.length > 10 ? d.label.slice(0, 8) + "…" : d.label}
               </button>
             ))}
           </div>
@@ -201,7 +201,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ââ Main Tap Area ââ */}
+      {/* ── Main Tap Area ── */}
       <div className="flex-1 flex flex-col items-center justify-center w-full max-w-md px-6 py-8">
         <p
           className="text-4xl md:text-5xl text-emerald-800 mb-2 leading-relaxed animate-fade-in-up"
@@ -287,7 +287,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ââ Bottom Stats ââ */}
+      {/* ── Bottom Stats ── */}
       <footer className="w-full max-w-md px-6 pb-8">
         <div className="grid grid-cols-4 gap-2 mb-4">
           {DHIKR_LIST.map((d, i) => (
@@ -310,7 +310,7 @@ export default function Home() {
         </button>
       </footer>
 
-      {/* ââ Bottom Nav ââ */}
+      {/* ── Bottom Nav ── */}
       <nav className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-lg border-t border-emerald-100/50 safe-area-bottom">
         <div className="max-w-md mx-auto flex">
           <a
